@@ -2,16 +2,15 @@ buildscript {
     ext {
         springBootVersion = '2.1.7.RELEASE'
     }
-
     repositories {
         mavenCentral()
         jcenter()
     }
-
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}'
     }
 }
+
 plugins {
     id 'java'
     id 'eclipse'
@@ -21,14 +20,18 @@ plugins {
 
 group 'com.jojoldu.book'
 version '1.0-SNAPSHOT'
-
+bootJar.enabled = false
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation 'org.no-hope:springapp:0.2.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.projectlombok:lombok')
 }
 
 test {
